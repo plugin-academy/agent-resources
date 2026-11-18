@@ -1,0 +1,7 @@
+{
+  "schemaVersion": 1,
+  "name": "Plugin Academy Claude Code catalogs",
+  "publisher": "plugin.academy",
+  "ecosystem": "claude",
+  "catalogs": []
+}

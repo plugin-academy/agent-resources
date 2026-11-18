@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://plugin.academy/schemas/catalog.schema.json",
+  "title": "Publisher-maintained collection, not a registry discovery document",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "name", "description", "publisher", "ecosystem", "resourceType", "distributionType", "url", "updatedAt", "curation", "pluginAcademy"],
+  "properties": {
+    "id": { "type": "string", "format": "https-url" },
+    "name": { "type": "string", "minLength": 1, "maxLength": 160, "pattern": "\\S" },
+    "description": { "type": "string", "minLength": 1, "maxLength": 2000, "pattern": "\\S" },
+    "publisher": { "type": "string", "format": "publisher-id" },
+    "ecosystem": { "enum": ["dsh", "claude", "codex", "mcp", "skills"] },
+    "resourceType": { "type": "string", "minLength": 1 },
+    "distributionType": { "type": "string", "minLength": 1 },
+    "url": { "type": "string", "format": "https-url" },
+    "pluginCount": { "type": "integer", "minimum": 0, "maximum": 9007199254740991 },
+    "updatedAt": { "type": "string", "format": "date-time" },
+    "curation": { "enum": ["official", "community"] },
+    "tags": {
+      "type": "array",
+      "uniqueItems": true,
+      "maxItems": 20,
+      "items": { "type": "string", "minLength": 1, "maxLength": 48, "pattern": "^\\S(?:[\\s\\S]*\\S)?$" }
+    },
+    "pluginAcademy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hosting", "status"],
+      "properties": {
+        "hosting": { "enum": ["plugin-academy", "external"] },
+        "status": { "enum": ["submitted", "validated", "verified", "featured", "deprecated"] },
+        "resourceNames": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 1, "maxLength": 214 } }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "ecosystem": { "const": "dsh" } } },
+      "then": {
+        "required": ["pluginCount"],
+        "properties": {
+          "resourceType": { "const": "plugin-index" },
+          "distributionType": { "const": "dsh-plugin-index-v1" }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "ecosystem": { "const": "dsh" },
+          "pluginAcademy": { "type": "object", "properties": { "hosting": { "const": "plugin-academy" } } }
+        }
+      },
+      "then": {
+        "properties": {
+          "url": { "type": "string", "pattern": "^https://plugin\\.academy/dsh/(?:community/)?[a-z0-9-]+/index\\.json$" }
+        }
+      }
+    }
+  ]
+}

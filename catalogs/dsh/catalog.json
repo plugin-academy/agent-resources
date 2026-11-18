@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "name": "Plugin Academy DSH indexes",
+  "publisher": "plugin.academy",
+  "ecosystem": "dsh",
+  "catalogs": [
+    {
+      "id": "https://plugin.academy/catalogs/dsh/featured",
+      "name": "Featured",
+      "description": "A small curated collection of useful DSH plugins, retaining their original authors and native installation sources.",
+      "publisher": "plugin.academy",
+      "ecosystem": "dsh",
+      "resourceType": "plugin-index",
+      "distributionType": "dsh-plugin-index-v1",
+      "url": "https://plugin.academy/dsh/featured/index.json",
+      "pluginCount": 1,
+      "updatedAt": "2026-11-18T07:06:32Z",
+      "curation": "official",
+      "tags": ["developer-tools", "context"],
+      "pluginAcademy": {
+        "hosting": "plugin-academy",
+        "status": "validated",
+        "resourceNames": ["dsh-context"]
+      }
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://plugin.academy/schemas/discovery.schema.json",
+  "title": "Plugin Academy registry discovery",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "name", "publisher"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "name": { "type": "string", "minLength": 1, "maxLength": 160 },
+    "publisher": { "type": "string", "format": "publisher-id" },
+    "ecosystem": { "enum": ["dsh", "claude", "codex", "mcp", "skills"] },
+    "ecosystems": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["ecosystem", "url"],
+        "properties": {
+          "ecosystem": { "enum": ["dsh", "claude", "codex", "mcp", "skills"] },
+          "url": { "type": "string", "format": "https-url" }
+        }
+      }
+    },
+    "catalogs": {
+      "type": "array",
+      "maxItems": 500,
+      "items": { "$ref": "catalog.schema.json" }
+    },
+    "format": { "const": 1 },
+    "sources": {
+      "type": "array",
+      "maxItems": 500,
+      "items": {
+        "type": "object",
+        "required": ["url", "title", "publisher", "pluginCount"],
+        "properties": {
+          "url": { "type": "string", "format": "https-url" },
+          "title": { "type": "string", "minLength": 1, "maxLength": 160 },
+          "publisher": {
+            "type": "object",
+            "required": ["id", "name", "url"],
+            "properties": {
+              "id": { "type": "string", "format": "publisher-id" },
+              "name": { "type": "string", "minLength": 1, "maxLength": 160 },
+              "url": { "type": "string", "format": "https-url" }
+            }
+          },
+          "pluginCount": { "type": "integer", "minimum": 0, "maximum": 9007199254740991 }
+        }
+      }
+    }
+  },
+  "dependentRequired": { "format": ["sources"], "sources": ["format", "ecosystem", "catalogs"] },
+  "allOf": [
+    { "if": { "required": ["format"] }, "then": { "properties": { "ecosystem": { "const": "dsh" } } } }
+  ],
+  "oneOf": [
+    { "required": ["ecosystems"], "not": { "anyOf": [{ "required": ["catalogs"] }, { "required": ["ecosystem"] }] } },
+    { "required": ["ecosystem", "catalogs"], "not": { "required": ["ecosystems"] } }
+  ]
+}

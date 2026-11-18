@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "name": "Plugin Academy discovery",
+  "publisher": "plugin.academy",
+  "ecosystems": [
+    { "ecosystem": "dsh", "url": "https://plugin.academy/catalogs/dsh/catalog.json" },
+    { "ecosystem": "claude", "url": "https://plugin.academy/catalogs/claude/catalog.json" },
+    { "ecosystem": "codex", "url": "https://plugin.academy/catalogs/codex/catalog.json" }
+  ]
+}

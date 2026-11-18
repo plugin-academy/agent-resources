@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://plugin.academy/schemas/resource.schema.json",
+  "title": "Optional canonical resource metadata; not an ecosystem package manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "name", "publisher", "ecosystem", "url", "provenance"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^urn:air:[a-z0-9.-]+:[a-zA-Z0-9._~-]+:[a-zA-Z0-9._~:-]+$" },
+    "name": { "type": "string", "minLength": 1, "maxLength": 160 },
+    "description": { "type": "string", "minLength": 1, "maxLength": 2000 },
+    "publisher": { "type": "string", "format": "publisher-id" },
+    "ecosystem": { "enum": ["dsh", "claude", "codex", "mcp", "skills"] },
+    "url": { "type": "string", "format": "https-url" },
+    "provenance": { "type": "string", "format": "https-url" }
+  }
+}

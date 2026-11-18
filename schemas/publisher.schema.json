@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://plugin.academy/schemas/publisher.schema.json",
+  "title": "Plugin Academy publisher",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "name", "url", "description", "verification"],
+  "properties": {
+    "id": { "type": "string", "format": "publisher-id" },
+    "name": { "type": "string", "minLength": 1, "maxLength": 160, "pattern": "\\S" },
+    "url": { "type": "string", "format": "https-url" },
+    "repository": { "type": "string", "format": "https-url" },
+    "description": { "type": "string", "minLength": 1, "maxLength": 2000, "pattern": "\\S" },
+    "verification": { "enum": ["unverified", "verified"] }
+  }
+}
