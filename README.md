@@ -6,7 +6,7 @@ This repository holds the publisher and catalog metadata for
 ## Browse or use a catalog
 
 - [DSH catalog](https://plugin.academy/catalogs/dsh/catalog.json): the list of
-  indexes you can browse with [Plugin Indexes for DeepSeek Harness](https://www.npmjs.com/package/@plugin-academy/dsh-plugin-indexes).
+  indexes you can browse with [Plugin Academy for DeepSeek Harness](https://www.npmjs.com/package/@plugin-academy/dsh-plugin-academy).
 - [Featured index](https://plugin.academy/dsh/featured/index.json): add this
   index directly in Harness if you don't use the catalog plugin.
 - [Publisher and catalog directory](https://plugin.academy/directory.json):

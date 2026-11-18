@@ -22,6 +22,78 @@
         "status": "validated",
         "resourceNames": ["dsh-context"]
       }
+    },
+    {
+      "id": "https://plugin.academy/catalogs/dsh/community/awesome-dsh-plugin",
+      "name": "Awesome DSH Plugin",
+      "description": "A bilingual community-curated DSH plugin index from Awesome DSH Plugin, distributed through the dsh-plugin-catalog npm package via jsDelivr.",
+      "publisher": "awesome-dsh-plugin.com",
+      "ecosystem": "dsh",
+      "resourceType": "plugin-index",
+      "distributionType": "dsh-plugin-index-v1",
+      "url": "https://cdn.jsdelivr.net/npm/dsh-plugin-catalog/index.json",
+      "pluginCount": 6112,
+      "updatedAt": "2026-11-18T08:51:44Z",
+      "curation": "community",
+      "tags": ["curated", "bilingual"],
+      "pluginAcademy": {
+        "hosting": "external",
+        "status": "submitted"
+      }
+    },
+    {
+      "id": "https://plugin.academy/catalogs/dsh/community/dshseek",
+      "name": "DSHSeek",
+      "description": "A bilingual community-maintained DSH plugin index from DSHSeek, linking to original plugin authors and native installation sources.",
+      "publisher": "dshseek.com",
+      "ecosystem": "dsh",
+      "resourceType": "plugin-index",
+      "distributionType": "dsh-plugin-index-v1",
+      "url": "https://dshseek.com/market/dsh-index.json",
+      "pluginCount": 29,
+      "updatedAt": "2026-11-18T08:45:17Z",
+      "curation": "community",
+      "tags": ["curated", "bilingual"],
+      "pluginAcademy": {
+        "hosting": "external",
+        "status": "submitted"
+      }
+    },
+    {
+      "id": "https://plugin.academy/catalogs/dsh/community/dsh-so",
+      "name": "DSH.SO Plugin Market",
+      "description": "A community DSH plugin market maintained by DSH.SO, with publisher-provided installation checks and audit information.",
+      "publisher": "dsh.so",
+      "ecosystem": "dsh",
+      "resourceType": "plugin-index",
+      "distributionType": "dsh-plugin-index-v1",
+      "url": "https://cdn.dsh.so/market/index.json",
+      "pluginCount": 14534,
+      "updatedAt": "2026-11-18T08:45:17Z",
+      "curation": "community",
+      "tags": ["discovery", "bilingual"],
+      "pluginAcademy": {
+        "hosting": "external",
+        "status": "submitted"
+      }
+    },
+    {
+      "id": "https://plugin.academy/catalogs/dsh/community/dsh-so-top-rank",
+      "name": "DSH.SO Curated Leaderboards",
+      "description": "A community DSH index from DSH.SO combining leaderboards for stars, weekly star growth, total and weekly npm downloads, recent activity, and new arrivals.",
+      "publisher": "dsh.so",
+      "ecosystem": "dsh",
+      "resourceType": "plugin-index",
+      "distributionType": "dsh-plugin-index-v1",
+      "url": "https://cdn.dsh.so/market/top-rank.json",
+      "pluginCount": 1200,
+      "updatedAt": "2026-11-18T08:45:17Z",
+      "curation": "community",
+      "tags": ["leaderboards", "bilingual"],
+      "pluginAcademy": {
+        "hosting": "external",
+        "status": "submitted"
+      }
     }
   ]
 }

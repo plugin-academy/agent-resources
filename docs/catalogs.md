@@ -11,7 +11,7 @@ formats as well as standard date-time validation.
 
 Canonical ecosystem documents live under `catalogs/<ecosystem>/catalog.json`.
 The build produces their public copies. For DSH it also generates
-`format: 1, sources: [...]`, the Plugin Indexes contract, with
+the DSH catalog format (`format: 1, sources: [...]`), with
 `title`, publisher display metadata, required `pluginCount`, optional tags,
 and update date. Tags must be nonblank, trimmed, and unique. Additional identity
 and curation fields are forward-compatible.
@@ -38,6 +38,23 @@ schema. Claude and Codex start empty; no placeholder native manifests or
 fictional plugins are published.
 
 Maintainers can apply a reviewed DSH publication report with
-`npm run sync:dsh -- ../dsh-plugin-indexes/dist/catalog-updates.json`. This
+`npm run sync:dsh -- ../dsh-plugin-academy/dist/catalog-updates.json`. This
 updates hosted collection membership and counts, not plugin versions or
 descriptions.
+
+## Community DSH indexes
+
+| Index | Publisher | Plugin count snapshot (2026-11-18) |
+| --- | --- | ---: |
+| [Awesome DSH Plugin](https://cdn.jsdelivr.net/npm/dsh-plugin-catalog/index.json) | [Awesome DSH Plugin](https://awesome-dsh-plugin.com) | 6,112 |
+| [DSHSeek](https://dshseek.com/market/dsh-index.json) | [DSHSeek](https://dshseek.com/about/) | 29 |
+| [DSH.SO Plugin Market](https://cdn.dsh.so/market/index.json) | [DSH.SO](https://www.dsh.so) | 14,534 |
+| [DSH.SO Curated Leaderboards](https://cdn.dsh.so/market/top-rank.json) | [DSH.SO](https://www.dsh.so) | 1,200 |
+
+These are separate, independently hosted indexes registered with
+`curation: community`, `hosting: external`, and `status: submitted`.
+Their publisher identities remain unverified. Any upstream claims about
+verification or security auditing belong to the publisher, not Plugin Academy.
+Plugin counts are snapshots; the native indexes remain authoritative for
+current membership and installation details. Hosted publication reports do not
+update these external indexes.

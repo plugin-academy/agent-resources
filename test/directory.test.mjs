@@ -7,12 +7,35 @@ const data = await loadDirectory()
 const featured = data.catalogs.find(catalog => catalog.id === 'https://plugin.academy/catalogs/dsh/featured')
 
 test('canonical identities and ecosystem pointers resolve', () => {
-  assert.equal(data.catalogs[0].publisher, data.publishers[0].id)
-  assert.equal(data.catalogs[0].pluginCount, 1)
+  assert.ok(data.publishers.some(publisher => publisher.id === featured.publisher))
+  assert.equal(featured.pluginCount, 1)
   assert.doesNotThrow(() => validateDirectory(data))
 })
 test('the Featured collection lists dsh-context as its only plugin', () => {
   assert.deepEqual(featured?.pluginAcademy.resourceNames, ['dsh-context'])
+})
+test('Awesome DSH Plugin immediately follows the Plugin Academy collection', () => {
+  const doc = data.discoveries.find(value => value.ecosystem === 'dsh')
+  assert.deepEqual(doc.catalogs.slice(0, 2).map(catalog => catalog.url), [
+    featured.url, 'https://cdn.jsdelivr.net/npm/dsh-plugin-catalog/index.json',
+  ])
+})
+test('community DSH catalogs preserve external distribution and publisher attribution', () => {
+  for (const [url, publisher] of [
+    ['https://dshseek.com/market/dsh-index.json', 'dshseek.com'],
+    ['https://cdn.dsh.so/market/index.json', 'dsh.so'],
+    ['https://cdn.dsh.so/market/top-rank.json', 'dsh.so'],
+    ['https://cdn.jsdelivr.net/npm/dsh-plugin-catalog/index.json', 'awesome-dsh-plugin.com'],
+  ]) {
+    const catalog = data.catalogs.find(value => value.url === url)
+    assert.ok(catalog, `Missing community index ${url}`)
+    assert.equal(catalog.publisher, publisher)
+    assert.equal(catalog.ecosystem, 'dsh')
+    assert.equal(catalog.curation, 'community')
+    assert.ok(catalog.pluginCount > 0)
+    assert.deepEqual(catalog.pluginAcademy, { hosting: 'external', status: 'submitted' })
+    assert.equal(data.publishers.find(value => value.id === publisher)?.verification, 'unverified')
+  }
 })
 test('schemas reject invalid identity, transport, date, and unknown fields', () => {
   for (const patch of [
@@ -75,5 +98,11 @@ test('publication handoff changes only membership, not every plugin release', ()
   const updated = updateCatalog(doc, { schemaVersion: 1, indexes: [entry] })
   assert.equal(updated.catalogs[0].updatedAt, entry.updatedAt)
   assert.deepEqual(updated.catalogs[0].pluginAcademy.resourceNames, entry.resourceNames)
-  assert.throws(() => updateCatalog(doc, { schemaVersion: 1, indexes: [{ ...entry, url: 'https://unknown.example/index.json' }] }))
+  const external = doc.catalogs.filter(catalog => catalog.pluginAcademy.hosting === 'external')
+  assert.deepEqual(updated.catalogs.filter(catalog => catalog.pluginAcademy.hosting === 'external'), external)
+  for (const url of ['https://unknown.example/index.json', ...external.map(catalog => catalog.url)]) {
+    assert.throws(() => updateCatalog(doc, {
+      schemaVersion: 1, indexes: [{ ...entry, url }],
+    }), /Unknown hosted index/)
+  }
 })
