@@ -63,7 +63,7 @@ descriptions.
 
 | Index | Publisher | Plugin count snapshot (2026-11-18) |
 | --- | --- | ---: |
-| [Featured](https://plugin.academy/dsh/featured/index.json) | [Plugin Academy](https://plugin.academy) | 1 |
+| [Featured](https://plugin.academy/dsh/featured/index.json) | [Plugin Academy](https://plugin.academy) | 2 |
 
 ## Community DSH indexes
 

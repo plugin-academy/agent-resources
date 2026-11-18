@@ -13,14 +13,20 @@
       "resourceType": "plugin-index",
       "distributionType": "dsh-plugin-index-v1",
       "url": "https://plugin.academy/dsh/featured/index.json",
-      "pluginCount": 1,
-      "updatedAt": "2026-11-18T10:12:25Z",
+      "pluginCount": 2,
+      "updatedAt": "2026-11-18T11:12:26Z",
       "curation": "academy",
-      "tags": ["developer-tools", "context"],
+      "tags": [
+        "developer-tools",
+        "context"
+      ],
       "pluginAcademy": {
         "hosting": "plugin-academy",
         "status": "validated",
-        "resourceNames": ["dsh-context"]
+        "resourceNames": [
+          "@plugin-academy/dsh-plugin-academy",
+          "dsh-context"
+        ]
       }
     },
     {
@@ -35,7 +41,10 @@
       "pluginCount": 6112,
       "updatedAt": "2026-11-18T08:51:44Z",
       "curation": "community",
-      "tags": ["curated", "bilingual"],
+      "tags": [
+        "curated",
+        "bilingual"
+      ],
       "pluginAcademy": {
         "hosting": "external",
         "status": "submitted"
@@ -53,7 +62,10 @@
       "pluginCount": 14534,
       "updatedAt": "2026-11-18T08:45:17Z",
       "curation": "community",
-      "tags": ["discovery", "bilingual"],
+      "tags": [
+        "discovery",
+        "bilingual"
+      ],
       "pluginAcademy": {
         "hosting": "external",
         "status": "submitted"
@@ -71,7 +83,10 @@
       "pluginCount": 1200,
       "updatedAt": "2026-11-18T08:45:17Z",
       "curation": "community",
-      "tags": ["leaderboards", "bilingual"],
+      "tags": [
+        "leaderboards",
+        "bilingual"
+      ],
       "pluginAcademy": {
         "hosting": "external",
         "status": "submitted"
@@ -89,7 +104,11 @@
       "pluginCount": 2,
       "updatedAt": "2026-11-18T10:12:25Z",
       "curation": "official",
-      "tags": ["developer-tools", "domains", "cloudflare"],
+      "tags": [
+        "developer-tools",
+        "domains",
+        "cloudflare"
+      ],
       "pluginAcademy": {
         "hosting": "external",
         "status": "submitted"

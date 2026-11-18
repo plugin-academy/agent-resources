@@ -8,12 +8,12 @@ const featured = data.catalogs.find(catalog => catalog.id === 'https://plugin.ac
 
 test('canonical identities and ecosystem pointers resolve', () => {
   assert.ok(data.publishers.some(publisher => publisher.id === featured.publisher))
-  assert.equal(featured.pluginCount, 1)
+  assert.equal(featured.pluginCount, 2)
   assert.doesNotThrow(() => validateDirectory(data))
 })
-test('the Featured collection lists dsh-context as its only plugin', () => {
+test('the Featured collection lists dsh-context and Plugin Academy', () => {
   assert.equal(featured?.curation, 'academy')
-  assert.deepEqual(featured?.pluginAcademy.resourceNames, ['dsh-context'])
+  assert.deepEqual(featured?.pluginAcademy.resourceNames, ['@plugin-academy/dsh-plugin-academy', 'dsh-context'])
 })
 test('Awesome DSH Plugin immediately follows the Plugin Academy collection', () => {
   const doc = data.discoveries.find(value => value.ecosystem === 'dsh')
@@ -109,13 +109,15 @@ test('resource identity keeps the ARD publisher domain and provenance', () => {
 test('publication handoff changes only membership, not every plugin release', () => {
   const doc = data.discoveries.find(value => value.ecosystem === 'dsh')
   const entry = {
-    url: doc.catalogs[0].url, pluginCount: 1,
+    url: doc.catalogs[0].url, pluginCount: doc.catalogs[0].pluginCount,
     resourceNames: [...doc.catalogs[0].pluginAcademy.resourceNames], updatedAt: '2026-11-17T00:00:00Z',
   }
   assert.deepEqual(updateCatalog(doc, { schemaVersion: 1, indexes: [entry] }), doc)
   entry.resourceNames = ['@example/replacement']
+  entry.pluginCount = entry.resourceNames.length
   const updated = updateCatalog(doc, { schemaVersion: 1, indexes: [entry] })
   assert.equal(updated.catalogs[0].updatedAt, entry.updatedAt)
+  assert.equal(updated.catalogs[0].pluginCount, entry.pluginCount)
   assert.deepEqual(updated.catalogs[0].pluginAcademy.resourceNames, entry.resourceNames)
   const external = doc.catalogs.filter(catalog => catalog.pluginAcademy.hosting === 'external')
   assert.deepEqual(updated.catalogs.filter(catalog => catalog.pluginAcademy.hosting === 'external'), external)
