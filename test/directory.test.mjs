@@ -12,6 +12,7 @@ test('canonical identities and ecosystem pointers resolve', () => {
   assert.doesNotThrow(() => validateDirectory(data))
 })
 test('the Featured collection lists dsh-context as its only plugin', () => {
+  assert.equal(featured?.curation, 'academy')
   assert.deepEqual(featured?.pluginAcademy.resourceNames, ['dsh-context'])
 })
 test('Awesome DSH Plugin immediately follows the Plugin Academy collection', () => {
@@ -19,6 +20,25 @@ test('Awesome DSH Plugin immediately follows the Plugin Academy collection', () 
   assert.deepEqual(doc.catalogs.slice(0, 2).map(catalog => catalog.url), [
     featured.url, 'https://cdn.jsdelivr.net/npm/dsh-plugin-catalog/index.json',
   ])
+})
+test('Beings Labs is the first official index after academy and community collections', () => {
+  const doc = data.discoveries.find(value => value.ecosystem === 'dsh')
+  assert.deepEqual(doc.catalogs.map(catalog => catalog.curation), [
+    'academy', 'community', 'community', 'community', 'official',
+  ])
+  const [official] = doc.catalogs.filter(catalog => catalog.curation === 'official')
+  assert.equal(official.url, 'https://labs.beings.dev/dsh/index.json')
+  assert.equal(official.publisher, 'labs.beings.dev')
+  assert.equal(official.pluginCount, 2)
+  assert.deepEqual(official.pluginAcademy, { hosting: 'external', status: 'submitted' })
+  assert.equal(data.publishers.find(publisher => publisher.id === official.publisher)?.verification, 'unverified')
+})
+test('academy curation is reserved for Plugin Academy, not official publisher indexes', () => {
+  const value = structuredClone(data)
+  const official = value.catalogs.find(catalog => catalog.url === 'https://labs.beings.dev/dsh/index.json')
+  assert.doesNotThrow(() => validateDirectory(value))
+  official.curation = 'academy'
+  assert.throws(() => validateDirectory(value), /Academy catalogs must be maintained by Plugin Academy/)
 })
 test('community DSH catalogs preserve external distribution and publisher attribution', () => {
   for (const [url, publisher] of [

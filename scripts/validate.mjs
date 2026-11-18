@@ -70,7 +70,7 @@ export function validateDirectory(data) {
     if (!global[0].ecosystems.some(pointer => pointer.ecosystem === doc.ecosystem)) throw new Error(`Missing global pointer for ${doc.ecosystem}.`)
     for (const catalog of doc.catalogs) {
       if (catalog.ecosystem !== doc.ecosystem) throw new Error(`Catalog ${catalog.id} is in the wrong ecosystem.`)
-      if (catalog.curation === 'official' && catalog.publisher !== 'plugin.academy') throw new Error('Official catalogs must be maintained by Plugin Academy.')
+      if (catalog.curation === 'academy' && catalog.publisher !== 'plugin.academy') throw new Error('Academy catalogs must be maintained by Plugin Academy.')
       const names = catalog.pluginAcademy.resourceNames
       if (names && catalog.pluginCount !== names.length) throw new Error(`Resource count mismatch for ${catalog.id}.`)
     }

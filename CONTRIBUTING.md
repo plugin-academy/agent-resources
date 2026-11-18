@@ -7,8 +7,11 @@ Submit a pull request; no account system or submission API is needed.
    Do not claim verification; provide domain-control evidence in the PR.
 2. Add a catalog to the appropriate ecosystem discovery document. External
    HTTPS URLs are welcome; moving an independent publisher's repository is
-   not required. Use `curation: community`, `hosting: external`, and
-   `status: submitted` for a new independent collection.
+   not required. Use `hosting: external` and `status: submitted` for a new
+   independent collection. Use `curation: community` unless the publishing
+   company owns every included plugin; those indexes may use
+   `curation: official` with ownership provenance. `curation: academy` is
+   reserved for collections curated by Plugin Academy.
 3. Include provenance and native installation documentation. Catalog
    maintainers are not necessarily the authors of the resources they curate.
 4. Run `npm ci && npm run validate && npm test && npm run build`.

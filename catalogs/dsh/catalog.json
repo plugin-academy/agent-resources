@@ -14,8 +14,8 @@
       "distributionType": "dsh-plugin-index-v1",
       "url": "https://plugin.academy/dsh/featured/index.json",
       "pluginCount": 1,
-      "updatedAt": "2026-11-18T07:06:32Z",
-      "curation": "official",
+      "updatedAt": "2026-11-18T10:12:25Z",
+      "curation": "academy",
       "tags": ["developer-tools", "context"],
       "pluginAcademy": {
         "hosting": "plugin-academy",
@@ -72,6 +72,24 @@
       "updatedAt": "2026-11-18T08:45:17Z",
       "curation": "community",
       "tags": ["leaderboards", "bilingual"],
+      "pluginAcademy": {
+        "hosting": "external",
+        "status": "submitted"
+      }
+    },
+    {
+      "id": "https://plugin.academy/catalogs/dsh/official/beings-labs",
+      "name": "Beings Labs",
+      "description": "Official DSH plugins published and maintained by Beings Labs, with native installation sources.",
+      "publisher": "labs.beings.dev",
+      "ecosystem": "dsh",
+      "resourceType": "plugin-index",
+      "distributionType": "dsh-plugin-index-v1",
+      "url": "https://labs.beings.dev/dsh/index.json",
+      "pluginCount": 2,
+      "updatedAt": "2026-11-18T10:12:25Z",
+      "curation": "official",
+      "tags": ["developer-tools", "domains", "cloudflare"],
       "pluginAcademy": {
         "hosting": "external",
         "status": "submitted"
