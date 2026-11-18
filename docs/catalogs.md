@@ -47,7 +47,6 @@ descriptions.
 | Index | Publisher | Plugin count snapshot (2026-11-18) |
 | --- | --- | ---: |
 | [Awesome DSH Plugin](https://cdn.jsdelivr.net/npm/dsh-plugin-catalog/index.json) | [Awesome DSH Plugin](https://awesome-dsh-plugin.com) | 6,112 |
-| [DSHSeek](https://dshseek.com/market/dsh-index.json) | [DSHSeek](https://dshseek.com/about/) | 29 |
 | [DSH.SO Plugin Market](https://cdn.dsh.so/market/index.json) | [DSH.SO](https://www.dsh.so) | 14,534 |
 | [DSH.SO Curated Leaderboards](https://cdn.dsh.so/market/top-rank.json) | [DSH.SO](https://www.dsh.so) | 1,200 |
 

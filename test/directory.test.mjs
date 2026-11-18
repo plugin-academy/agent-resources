@@ -22,7 +22,6 @@ test('Awesome DSH Plugin immediately follows the Plugin Academy collection', () 
 })
 test('community DSH catalogs preserve external distribution and publisher attribution', () => {
   for (const [url, publisher] of [
-    ['https://dshseek.com/market/dsh-index.json', 'dshseek.com'],
     ['https://cdn.dsh.so/market/index.json', 'dsh.so'],
     ['https://cdn.dsh.so/market/top-rank.json', 'dsh.so'],
     ['https://cdn.jsdelivr.net/npm/dsh-plugin-catalog/index.json', 'awesome-dsh-plugin.com'],

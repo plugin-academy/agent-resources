@@ -42,24 +42,6 @@
       }
     },
     {
-      "id": "https://plugin.academy/catalogs/dsh/community/dshseek",
-      "name": "DSHSeek",
-      "description": "A bilingual community-maintained DSH plugin index from DSHSeek, linking to original plugin authors and native installation sources.",
-      "publisher": "dshseek.com",
-      "ecosystem": "dsh",
-      "resourceType": "plugin-index",
-      "distributionType": "dsh-plugin-index-v1",
-      "url": "https://dshseek.com/market/dsh-index.json",
-      "pluginCount": 29,
-      "updatedAt": "2026-11-18T08:45:17Z",
-      "curation": "community",
-      "tags": ["curated", "bilingual"],
-      "pluginAcademy": {
-        "hosting": "external",
-        "status": "submitted"
-      }
-    },
-    {
       "id": "https://plugin.academy/catalogs/dsh/community/dsh-so",
       "name": "DSH.SO Plugin Market",
       "description": "A community DSH plugin market maintained by DSH.SO, with publisher-provided installation checks and audit information.",
